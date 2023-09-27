@@ -1,5 +1,7 @@
 package hexlet.code.schemas;
 
+import hexlet.code.Validator;
+
 public class StringSchema {
     private boolean isResize;
     private boolean isRequired;
@@ -15,7 +17,11 @@ public class StringSchema {
 
 
     public boolean isValid(String value) {
-        if (value == null || value.isEmpty() && !isResize && !isRequired && !isContains) {
+        if (value == null || value.isEmpty()) {
+            return true;
+        } else if (!isResize && !isRequired && !isContains) {
+            return true;
+        } else if (value.contains(word) && value.length() == size) {
             return true;
         } else {
             return false;
@@ -30,11 +36,13 @@ public class StringSchema {
 
     public StringSchema contains(String word) {
         isContains = true;
+        this.word = word;
         return this;
     }
 
     public StringSchema minLength(int size) {
         isResize = true;
+        this.size = size;
         return this;
     }
 }
