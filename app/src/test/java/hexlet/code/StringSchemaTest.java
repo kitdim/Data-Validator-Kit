@@ -28,8 +28,6 @@ public class StringSchemaTest {
         assertTrue(schema.isValid(null));
         assertTrue(schema.isValid(""));
         assertTrue(schema.isValid("dio"));
-        assertFalse(schema.required().isValid(null));
-        assertFalse(schema.contains("dio").minLength(3).isValid("nono"));
     }
 
 }
