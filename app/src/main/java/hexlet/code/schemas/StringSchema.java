@@ -2,11 +2,7 @@ package hexlet.code.schemas;
 
 public class StringSchema {
     public boolean isValid(String value) {
-        if (value == null || value.isEmpty() || value.length() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return value == null || value.isEmpty() || value.length() > 0;
     }
 
     public StringSchema required() {
