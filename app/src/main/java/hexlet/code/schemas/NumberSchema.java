@@ -7,7 +7,7 @@ public final class NumberSchema extends BaseSchema {
         super();
         addCheck("instanceof", value -> {
             if (value != null) {
-                return value instanceof Number;
+                return value instanceof Integer;
             }
             return true;
         });
@@ -21,13 +21,22 @@ public final class NumberSchema extends BaseSchema {
 
     public NumberSchema positive() {
         addCheck("positive",
-                value -> (value == null || ((Integer) value) >= 0));
+                value -> {
+                    if (value instanceof Integer) {
+                        return (Integer) value > 0;
+                    }
+                    return true;
+                });
         return this;
     }
 
     public NumberSchema range(int start, int end) {
-        addCheck("range",
-                value -> (value == null || ((Integer) value) >= start && ((Integer) value) <= end));
+        addCheck("range", value -> {
+                    if (value instanceof Integer) {
+                        return (Integer) value >= start && (Integer) value <= end;
+                    }
+                    return true;
+                });
         return this;
     }
 }

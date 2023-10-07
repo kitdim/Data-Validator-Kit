@@ -4,8 +4,7 @@ public final class StringSchema extends BaseSchema {
 
     public StringSchema() {
         super();
-        addCheck("instanceof",
-                value -> {
+        addCheck("instanceof", value -> {
                     if (value != null) {
                         return value instanceof String;
                     }
