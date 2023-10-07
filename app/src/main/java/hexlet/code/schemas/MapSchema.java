@@ -21,15 +21,14 @@ public class MapSchema extends BaseSchema {
 
     public MapSchema sizeof(int size) {
         addCheck("sizeof",
-                value -> ((Map<?,?>) value).size() == size);
+                value -> ((Map<?, ?>) value).size() == size);
         return this;
     }
 
     public MapSchema shape(Map<String, BaseSchema> schemas) {
         addCheck("shape",
-                value -> schemas.
-                        entrySet().stream().allMatch(item -> {
-                            Object object = ((Map<?, ?>) value).get(item.getKey());
+                value -> schemas.entrySet().stream().allMatch(item -> {
+                    Object object = ((Map<?, ?>) value).get(item.getKey());
                     return item.getValue().isValid(object);
                 })
         );
