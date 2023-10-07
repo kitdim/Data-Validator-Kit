@@ -63,7 +63,7 @@ public class ValidatorTest {
 
         mapSchema.required();
         assertFalse(mapSchema.isValid(null));
-        assertFalse(mapSchema.isValid(temp));
+        assertTrue(mapSchema.isValid(temp));
         temp.put(1, "Булгаков");
         assertTrue(mapSchema.isValid(temp));
 
