@@ -4,6 +4,7 @@ import hexlet.code.schemas.BaseSchema;
 import hexlet.code.schemas.MapSchema;
 import hexlet.code.schemas.NumberSchema;
 import hexlet.code.schemas.StringSchema;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -13,10 +14,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SchemaTest {
-    private final Validator validator = new Validator();
+    private Validator validator;
+    @BeforeEach
+    void initValidator() {
+        validator = new Validator();
+    }
 
     @Test
-    void stringSchemaTest() {
+    void testStringValidator() {
         StringSchema stringSchema = validator.string();
         assertTrue(stringSchema.isValid(null));
         assertTrue(stringSchema.isValid(""));
@@ -31,7 +36,7 @@ public class SchemaTest {
     }
 
     @Test
-    void numberSchemaTest() {
+    void testNumberValidator() {
         NumberSchema numberSchema = validator.number();
         assertTrue(numberSchema.isValid(null));
         assertFalse(numberSchema.isValid("dio"));
@@ -50,7 +55,7 @@ public class SchemaTest {
     }
 
     @Test
-    void mapSchemaTest() {
+    void testMapValidator() {
         MapSchema mapSchema = validator.map();
         Map<Integer, String> temp = new HashMap<>();
         assertTrue(mapSchema.isValid(null));
@@ -70,7 +75,7 @@ public class SchemaTest {
     }
 
     @Test
-    void mapSchemaShapeTest() {
+    void testMapValidatorShape() {
         MapSchema mapSchema = validator.map();
         Map<String, BaseSchema> schemas1 = new HashMap<>();
         Map<String, BaseSchema> schemas2 = new HashMap<>();
