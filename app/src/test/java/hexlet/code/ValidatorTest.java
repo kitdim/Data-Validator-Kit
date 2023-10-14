@@ -31,7 +31,7 @@ public final class ValidatorTest {
         stringSchema.required();
         assertFalse(stringSchema.isValid(null));
         assertFalse(stringSchema.minLength(5).isValid("dio"));
-        assertFalse(stringSchema.minLength(5).contains("Булгаков").isValid("Чехов"));
+        assertFalse(stringSchema.contains("Булгаков").isValid("Чехов"));
         assertTrue(stringSchema.contains("ов").minLength(5).isValid("Булгаков"));
     }
 
