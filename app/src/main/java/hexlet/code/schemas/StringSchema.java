@@ -13,7 +13,7 @@ public final class StringSchema extends BaseSchema {
     }
 
     public StringSchema required() {
-        addCheck("required", value -> (value != null && !value.equals("")));
+        addCheck("required", value -> (value != null && !((String) value).isEmpty()));
         return this;
     }
 
