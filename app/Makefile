@@ -9,7 +9,7 @@ build:
 install:
 	./gradlew clean install
 run:
-	./gradlew run
+	./gradlew --console plain jshell
 
 test:
 	./gradlew test
